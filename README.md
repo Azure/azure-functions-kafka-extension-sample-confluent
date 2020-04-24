@@ -37,6 +37,47 @@ Outline the file contents of the repository. It helps users navigate the codebas
 
 Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
 
+## Connecting to Confluent Cloud in Azure
+
+Connecting to a managed Kafka cluster as the one provided by [Confluent in Azure](https://www.confluent.io/azure/) requires a few additional steps:
+
+1. In the function trigger ensure that Protocol, AuthenticationMode, Username, Password and SslCaLocation are set.
+
+```c#
+public static class ConfluentCloudTrigger
+{
+    [FunctionName(nameof(ConfluentCloudStringTrigger))]
+    public static void ConfluentCloudStringTrigger(
+        [KafkaTrigger("BootstrapServer", "my-topic",
+            ConsumerGroup = "azfunc",
+            Protocol = BrokerProtocol.SaslSsl,
+            AuthenticationMode = BrokerAuthenticationMode.Plain,
+            Username = "ConfluentCloudUsername",
+            Password = "ConfluentCloudPassword",
+            SslCaLocation = "confluent_cloud_cacert.pem")]
+        KafkaEventData<string> kafkaEvent,
+        ILogger logger)
+    {
+        logger.LogInformation(kafkaEvent.Value.ToString());
+    }
+}
+```
+
+2. In the Function App application settings (or local.settings.json during development), set the authentication credentials for your Confluent Cloud environment<br>
+**BootstrapServer**: should contain the value of Bootstrap server found in Confluent Cloud settings page. Will be something like "xyz-xyzxzy.westeurope.azure.confluent.cloud:9092".<br>
+**ConfluentCloudUsername**: is you API access key, obtained from the Confluent Cloud web 
+site.
+**ConfluentCloudPassword**: is you API secret, obtained from the Confluent Cloud web site.
+
+3. Download and set the CA certification location. As described in [Confluent documentation](https://github.com/confluentinc/examples/tree/5.4.0-post/clients/cloud/csharp#produce-records), the .NET library does not have the capability to access root CA certificates.<br>
+Missing this step will cause your function to raise the error "sasl_ssl://xyz-xyzxzy.westeurope.azure.confluent.cloud:9092/bootstrap: Failed to verify broker certificate: unable to get local issuer certificate (after 135ms in state CONNECT)"<br>
+To overcome this, we need to:
+    - Download CA certificate (i.e. from https://curl.haxx.se/ca/cacert.pem).
+    - Rename the certificate file to anything other than cacert.pem to avoid any conflict with existing EventHubs Kafka certificate that is part of the extension.
+    - Include the file in the project, setting "copy to output directory"
+    - Set the SslCaLocation trigger attribute property. In the example we set to `confluent_cloud_cacert.pem`
+
+
 ## Setup
 
 Explain how to prepare the sample once the user clones or downloads the repository. The section should outline every step necessary to install dependencies and set up any settings (for example, API keys and output folders).
