@@ -19,34 +19,28 @@ Taxonomies for products and languages: https://review.docs.microsoft.com/new-hop
 
 This sample shows how to set up an write a .NET function app which writes to a Kafka Topic. It is using Confluent Cloud for the Kafka cluster. It also shows how to deploy this app on a Premium Function app.
 
-## Contents
-
-Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
-
-| File/folder       | Description                                |
-|-------------------|--------------------------------------------|
-| `src`             | Sample source code.                        |
-| `.gitignore`      | Define what to ignore at commit time.      |
-| `CHANGELOG.md`    | List of changes to the sample.             |
-| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
-| `README.md`       | This README file.                          |
-| `LICENSE`         | The license for the sample.                |
-
 ## Prerequisites
 
 * [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash)
 * [Az CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 
-* [Confluent Cloud](https://www.confluent.io/confluent-cloud/)
+* [Confluent Cloud Account](https://www.confluent.io/confluent-cloud/)
+Create a Confluent Cloud account. Confluent Cloud is a fully managed pay-as-you-go service. 
 
-Create a Confluent Cloud Kafka cluster. Confluent Cloud is a fully managed pay-as-you-go service. 
+## Steps
+
+### Setup the Kafka Cluster
+* Log into in your Confluent Cloud account and create a new Kafka cluster.
 
 ![CreateConfluentCluster](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-new.png)
 
-## Connecting to Confluent Cloud in Azure
+* Create a new Kafka Topic called "users"
 
-Connecting to a managed Kafka cluster as the one provided by [Confluent in Azure](https://www.confluent.io/azure/) requires a few additional steps:
+* Create a new API Key and Secret - note these values
 
-1. In the function trigger ensure that Protocol, AuthenticationMode, Username, Password and SslCaLocation are set.
+## Update the code to point to your Kafka cluster
+
+
+*. In the function trigger ensure that Protocol, AuthenticationMode, Username, Password and SslCaLocation are set.
 
 ```c#
 public static class ConfluentCloudTrigger
