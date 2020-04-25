@@ -35,7 +35,7 @@ Outline the file contents of the repository. It helps users navigate the codebas
 ## Prerequisites
 
 * [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash)
-*  
+* [Az CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 
 
 ## Connecting to Confluent Cloud in Azure
 
