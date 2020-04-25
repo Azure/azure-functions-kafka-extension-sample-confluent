@@ -7,7 +7,7 @@ products:
 description: "This is a simple sample which shows how to set up and write a function app which writes to a kafka topic"
 ---
 
-# Azure Functions Kafka Extension Sample using Confluent Cloud
+# Azure Functions Kafka extension sample using Confluent Cloud
 
 <!-- 
 Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
@@ -35,6 +35,7 @@ Create a Confluent Cloud account. Confluent Cloud is a fully managed pay-as-you-
 
 * Create a new Kafka Topic called "users"
 
+
 * Create a new API Key and Secret - note these values
 
 ### Update the code to point to your Kafka cluster
@@ -46,7 +47,9 @@ public static class ConfluentCloudTrigger
 {
     [FunctionName(nameof(ConfluentCloudStringTrigger))]
     public static void ConfluentCloudStringTrigger(
-        [KafkaTrigger("BootstrapServer", "my-topic",
+        [KafkaTrigger(
+            "BootstrapServer",
+            "Users",
             ConsumerGroup = "azfunc",
             Protocol = BrokerProtocol.SaslSsl,
             AuthenticationMode = BrokerAuthenticationMode.Plain,
