@@ -3,7 +3,7 @@ page_type: sample
 languages:
 - csharp
 products:
-- azure functions
+- azure-functions
 description: "This is a simple sample which shows how to set up and write a function app which writes to a kafka topic"
 urlFragment: "update-this-to-unique-url-stub"
 ---
