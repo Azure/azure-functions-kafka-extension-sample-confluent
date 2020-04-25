@@ -5,10 +5,9 @@ languages:
 products:
 - azure-functions
 description: "This is a simple sample which shows how to set up and write a function app which writes to a kafka topic"
-urlFragment: "update-this-to-unique-url-stub"
 ---
 
-# Official Microsoft Sample
+# Azure Functions Kafka Extension Sample using Confluent Cloud
 
 <!-- 
 Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
@@ -18,7 +17,7 @@ Guidance on onboarding samples to docs.microsoft.com/samples: https://review.doc
 Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
 -->
 
-Give a short description for your sample here. What does it do and why is it important?
+This sample shows how to set up an write a .NET function app which writes to a Kafka Topic. It is using Confluent Cloud for the Kafka cluster. It also shows how to deploy this app on a Premium Function app.
 
 ## Contents
 
