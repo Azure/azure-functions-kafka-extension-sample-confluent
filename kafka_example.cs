@@ -11,7 +11,9 @@ namespace kdotnet
     {
         [FunctionName("kafkaApp")]
         public static void ConfluentCloudStringTrigger(
-            [KafkaTrigger("pkc-epwny.eastus.azure.confluent.cloud:9092", "users",
+            [KafkaTrigger(
+                "pkc-epwny.eastus.azure.confluent.cloud:9092", 
+                "users",
                 ConsumerGroup = "azfunc",
                 Protocol = BrokerProtocol.SaslSsl,
                 AuthenticationMode = BrokerAuthenticationMode.Plain,
