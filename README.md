@@ -37,8 +37,7 @@ Create a Confluent Cloud account. Confluent Cloud is a fully managed pay-as-you-
 
 * Create a new API Key and Secret - note these values
 
-## Update the code to point to your Kafka cluster
-
+### Update the code to point to your Kafka cluster
 
 *. In the function trigger ensure that Protocol, AuthenticationMode, Username, Password and SslCaLocation are set.
 
