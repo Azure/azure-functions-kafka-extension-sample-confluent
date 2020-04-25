@@ -40,7 +40,7 @@ Outline the file contents of the repository. It helps users navigate the codebas
 
 Create a Confluent Cloud Kafka cluster. Confluent Cloud is a fully managed pay-as-you-go service. 
 
-[CreateConfluentCluster]
+[CreateConfluentCluster](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-new.png)
 
 ## Connecting to Confluent Cloud in Azure
 
