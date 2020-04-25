@@ -34,7 +34,8 @@ Outline the file contents of the repository. It helps users navigate the codebas
 
 ## Prerequisites
 
-Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
+* [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash)
+*  
 
 ## Connecting to Confluent Cloud in Azure
 
