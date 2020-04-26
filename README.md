@@ -48,12 +48,11 @@ After you create a Confluent Cloud account follow these [steps](https://docs.con
 
 * Change thge code in kafka_example.cs to point to your Kafka cluster that you set up in the previous step
 ```c#
-public static class ConfluentCloudTrigger
-{
-    [FunctionName(nameof(ConfluentCloudStringTrigger))]
-    public static void ConfluentCloudStringTrigger(
-        [KafkaTrigger(
-            [KafkaTrigger(
+public static class kafka_example
+    {
+        [FunctionName("kafkaApp")]
+        public static void ConfluentCloudStringTrigger(
+             [KafkaTrigger(
                 "BootstrapServer",
                 "users",
                 ConsumerGroup = "<ConsumerGroup>",
@@ -64,10 +63,10 @@ public static class ConfluentCloudTrigger
                 SslCaLocation = "confluent_cloud_cacert.pem")]
         KafkaEventData<string> kafkaEvent,
         ILogger logger)
-    {
-        logger.LogInformation(kafkaEvent.Value.ToString());
+        {	    
+            logger.LogInformation(kafkaEvent.Value.ToString());
+        }
     }
-}
 ```
 
 Replace the following values:
