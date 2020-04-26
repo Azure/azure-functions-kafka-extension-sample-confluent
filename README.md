@@ -106,9 +106,7 @@ You should see the Partitions of your Topic that have been assigned to this clie
 
 ### Deploying the sample to a Azure Functions Premium Plan
 
-* Now you are ready to deploy this Function app to a [Azure Functions Premium Plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan)
-
-* Use the following [link](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#create-a-premium-plan) for instructions on how to first create an Azure Functions Premium plan Function app. Note the name of the Function app.
+* Now you are ready to deploy this Function app to a [Azure Functions Premium Plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan). Use the following [link](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#create-a-premium-plan) for instructions on how to first create an Azure Functions Premium plan Function app. Note the name of the Function app.
 
 * To enable scaling in the Premium Function app currently you have to toggle a property on the Function app. 
 
@@ -119,12 +117,12 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 ```
 or you can use resources.azure.com 
 
-* Once you are done you can deploy you locally created Function app to the app created in Azure by using the following [func command](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#publish) by replacing the **NameOfFunctionApp** with the name of the Function app created in Azure in the previous step. <br>
+* You can now deploy your locally created Function app to the app created in Azure by using the following [func command](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#publish) by replacing the **NameOfFunctionApp** with the name of the Function app created in Azure in the previous step. <br>
 Note: To use this command you have to be logged into Azure using Azure CLI
 
-`
+```
 func azure function publish <NameOfFunctionApp>
-`
+```
 
 * Finally, you can head over to the portal and for example use the [Live Metrics view](https://docs.microsoft.com/en-us/azure/azure-monitor/app/live-stream) to see the logs and requests.
 
