@@ -11,19 +11,18 @@ namespace kdotnet
     {
         [FunctionName("kafkaApp")]
         public static void ConfluentCloudStringTrigger(
-            [KafkaTrigger(
-                "pkc-epwny.eastus.azure.confluent.cloud:9092", 
+             [KafkaTrigger(
+                "BootstrapServer",
                 "users",
-                ConsumerGroup = "azfunc",
+                ConsumerGroup = "<ConsumerGroup>",
                 Protocol = BrokerProtocol.SaslSsl,
                 AuthenticationMode = BrokerAuthenticationMode.Plain,
-                Username = "WHYYKOT6JMPYGJJV",
-                Password = "KUtytGe72JzhCKeA7cZ6dJj6oRE4I5NyOjMxj157tQaiJoVy67UD0sAqJM9e4QAZ",
+                Username = "<APIKey>",
+                Password = "<APISecret>",
                 SslCaLocation = "confluent_cloud_cacert.pem")]
-            KafkaEventData<string> kafkaEvent,
-            ILogger logger)
-        {
-	    Thread.Sleep(2000);
+        KafkaEventData<string> kafkaEvent,
+        ILogger logger)
+        {	    
             logger.LogInformation(kafkaEvent.Value.ToString());
         }
     }
