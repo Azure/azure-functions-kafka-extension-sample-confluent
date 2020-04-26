@@ -17,12 +17,12 @@ Guidance on onboarding samples to docs.microsoft.com/samples: https://review.doc
 Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
 -->
 
-This sample shows how to set up an write a .NET function app which writes to a Kafka Topic. It is using Confluent Cloud for the Kafka cluster. It also shows how to deploy this app on a Premium Function app.
+This sample shows how to set up an write a .NET Function app which writes to a Kafka Topic. It is using Confluent Cloud for the Kafka cluster. It also shows how to deploy this app on a Premium Function app.
 
 ## Prerequisites
 
 * [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash)
-* [Az CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 
+* [Azure Account](https://azure.microsoft.com/en-us/free/) and access to [Azure Portal](https://azure.microsoft.com/en-us/features/azure-portal/) OR [Az CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
 * [Confluent Cloud Account](https://www.confluent.io/confluent-cloud/)
 Create a Confluent Cloud account. Confluent Cloud is a fully managed pay-as-you-go service. 
 
@@ -87,23 +87,40 @@ To overcome this, you need to:
 
 ### Running the sample
 
-* Send some messages to the users topic. You can do so either using the sample application given in the quick start or using the Confluent Cloud interface.
+* Send some messages to the users Topic. You can do so either using the sample application given in the quick start or using the Confluent Cloud interface.
 
 ![CreateKafkaMessages](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-create-messages.png)
 
-* Run the following from the folder where you cloned the project
+* Run the following from the folder where you cloned the project to start the Function app locally
 
 ```
 func host start
 ```
 
-You should see the Assigned Paritions show up and messages that were sent before being processed.
+The Function app starts executing and should connect to your Confluent Cloud Kafka cluster.<br>
+
+You should see the Partitions of your Topic that have been assigned to this client show up and messages that were sent before being processed.
 
 ![CreateKafkaMessages](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-func-consume-messages.png)
 
 
-
 ### Deploying the sample to a Azure Functions Premium Plan
+
+Now you are ready to deploy this Function app to a [Azure Functions Premium Plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan)
+
+Use the following [link](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#create-a-premium-plan) for instructions on how to first create an Azure Functions Premium plan Function app. Note the name of the Function app.
+
+Once you are done you can deploy you locally created Function app to the app created in Azure by using the following [func command](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#publish) by replacing the **NameOfFunctionApp** with the name of the Function app created in Azure in the previous step. <br>
+Note: To use this command you have to be logged into Azure using Azure CLI
+
+`
+func azure function publish <NameOfFunctionApp>
+`
+
+Finally, you can head over to the portal and for example use the [Live Metrics view](https://docs.microsoft.com/en-us/azure/azure-monitor/app/live-stream) to see the logs and requests.
+
+![KafkaPortal](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-function-portal.png)
+
 
 
 ### Contributing
