@@ -28,7 +28,10 @@ Create a Confluent Cloud account. Confluent Cloud is a fully managed pay-as-you-
 
 ## Steps to set up 
 
-### Setup the Kafka Cluster
+### Setup the Kafka Cluster 
+
+After you create a Confluent Cloud account follow these [steps](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-quickstart) to get set up. Some of the main ones are also highlighted below.
+
 * Log into in your Confluent Cloud account and create a new Kafka cluster.
 
 ![CreateConfluentCluster](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-new.png)
@@ -38,24 +41,12 @@ Create a Confluent Cloud account. Confluent Cloud is a fully managed pay-as-you-
 
 * Create a new API Key and Secret - note these values
 
-### Update the code in kafka_example.cs to point to your Kafka cluster
 
-1.
-* **BootstrapServer**: should contain the value of Bootstrap server found in Confluent Cloud settings page. Will be something like "xyz-xyzxzy.westeurope.azure.confluent.cloud:9092".<br>
-* Set any string for your ConsumerGroup
-* **APIKey**: is you API access key, obtained from the Confluent Cloud web site.<br>
-* **APISecret**: is you API secret, obtained from the Confluent Cloud web site.<br>
+### Update the code 
 
-2.
-Download and set the CA certification location. As described in [Confluent documentation](https://github.com/confluentinc/examples/tree/5.4.0-post/clients/cloud/csharp#produce-records), the .NET library does not have the capability to access root CA certificates.<br>
-Missing this step will cause your function to raise the error "sasl_ssl://xyz-xyzxzy.westeurope.azure.confluent.cloud:9092/bootstrap: Failed to verify broker certificate: unable to get local issuer certificate (after 135ms in state CONNECT)"<br>
-To overcome this, we need to:
-    - Download CA certificate (i.e. from https://curl.haxx.se/ca/cacert.pem).
-    - Rename the certificate file to anything other than cacert.pem to avoid any conflict with existing EventHubs Kafka certificate that is part of the extension.
-    - Include the file in the project, setting "copy to output directory"
-    - Set the SslCaLocation trigger attribute property. In the example we have already downloaded this file `confluent_cloud_cacert.pem`
-    
+* Clone this repository using Git to a folder
 
+* Change thge code in kafka_example.cs to point to your Kafka cluster that you set up in the previous step
 ```c#
 public static class ConfluentCloudTrigger
 {
@@ -79,7 +70,37 @@ public static class ConfluentCloudTrigger
 }
 ```
 
+Replace the following values:
+* **BootstrapServer**: should contain the value of Bootstrap server found in Confluent Cloud settings page. Will be something like "xyz-xyzxzy.westeurope.azure.confluent.cloud:9092".<br>
+* Set any string for your ConsumerGroup
+* **APIKey**: is you API access key, obtained from the Confluent Cloud web site.<br>
+* **APISecret**: is you API secret, obtained from the Confluent Cloud web site.<br>
+
+Note about the CA certificate: 
+As described in [Confluent documentation](https://github.com/confluentinc/examples/tree/5.4.0-post/clients/cloud/csharp#produce-records), the .NET library does not have the capability to access root CA certificates.<br>
+Missing this step will cause your function to raise the error "sasl_ssl://xyz-xyzxzy.westeurope.azure.confluent.cloud:9092/bootstrap: Failed to verify broker certificate: unable to get local issuer certificate"<br>
+To overcome this, we need to:
+    - Download CA certificate (i.e. from https://curl.haxx.se/ca/cacert.pem).
+    - Rename the certificate file to anything other than cacert.pem to avoid any conflict with existing EventHubs Kafka certificate that is part of the extension.
+    - Include the file in the project, setting "copy to output directory" and set the SslCaLocation trigger attribute property.     
+    - In the example we have already downloaded this file and named it to `confluent_cloud_cacert.pem`  
+
 ### Running the sample
+
+* Send some messages to the users topic. You can do so either using the sample application given in the quick start or using the Confluent Cloud interface.
+
+
+
+* Run the following from the folder where you cloned the project
+
+```
+func host start
+```
+
+You should see the Assigned Paritions show up and messages that were sent before being processed.
+
+
+### Deploying the sample to a Azure Functions Premium Plan
 
 
 ### Contributing
