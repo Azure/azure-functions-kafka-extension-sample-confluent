@@ -34,7 +34,7 @@ Create a Confluent Cloud account. Confluent Cloud is a fully managed pay-as-you-
 ![CreateConfluentCluster](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-new.png)
 
 * Create a new Kafka Topic called "users"
-
+![CreateKafkaTopic](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-new-topic.png)
 
 * Create a new API Key and Secret - note these values
 
