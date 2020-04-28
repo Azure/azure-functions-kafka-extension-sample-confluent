@@ -32,7 +32,7 @@ Confluent Cloud is a fully managed pay-as-you-go Kafka service. Confluent Cloud 
 
 After you create a Confluent Cloud account follow these [steps](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-quickstart) to get set up. Some of the main ones are also highlighted below.
 
-* Log into in your Confluent Cloud account and create a new Kafka cluster. You should provision a cluster in the Azure region that you will run your Functions App in.
+* Log into in your Confluent Cloud account and create a new Kafka cluster. To minimize your data transfer costs, you should provision a cluster in the same Azure region where your Functions App will run.
 
 ![CreateConfluentCluster](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-new.png)
 
