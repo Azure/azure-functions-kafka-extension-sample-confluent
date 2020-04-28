@@ -46,7 +46,7 @@ After you create a Confluent Cloud account follow these [steps](https://docs.con
 
 * Clone this repository using Git to a folder
 
-* Change thge code in kafka_example.cs to point to your Kafka cluster that you set up in the previous step
+* Change the code in kafka_example.cs to point to your Kafka cluster that you set up in the previous step
 ```c#
 public static class kafka_example
     {
@@ -90,6 +90,8 @@ To overcome this, you need to:
 
 ![CreateKafkaMessages](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-create-messages.png)
 
+See Step 5 and 6 in the [quickstart](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-quickstart)
+
 * Run the following from the folder where you cloned the project to start the Function app locally
 
 ```
@@ -102,6 +104,7 @@ You should see the Partitions of your Topic that have been assigned to this clie
 
 ![CreateKafkaMessages](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-func-consume-messages.png)
 
+* Note: You may notice that we have 6 partitions on the Kafka Topic "Users" but this client has been only assigned 3 of them, this is because I have another client listening to the same Topic and Kafka has load balanced the partitions among the clients.
 
 ### Deploying the sample to a Azure Functions Premium Plan
 
