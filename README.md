@@ -23,8 +23,8 @@ This sample shows how to set up an write a .NET Function app which writes to a K
 
 * [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash)
 * [Azure Account](https://azure.microsoft.com/en-us/free/) and access to [Azure Portal](https://azure.microsoft.com/en-us/features/azure-portal/) OR [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
-* [Confluent Cloud Account](https://www.confluent.io/confluent-cloud/)
-Confluent Cloud is a fully managed pay-as-you-go Kafka service. 
+* [Confluent Cloud Account](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/confluentinc.confluent-cloud-kafka-service-azure?tab=Overview)
+Confluent Cloud is a fully managed pay-as-you-go Kafka service. Confluent Cloud integrates with your Azure billing account.
 
 ## Steps to set up 
 
@@ -32,11 +32,11 @@ Confluent Cloud is a fully managed pay-as-you-go Kafka service.
 
 After you create a Confluent Cloud account follow these [steps](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-quickstart) to get set up. Some of the main ones are also highlighted below.
 
-* Log into in your Confluent Cloud account and create a new Kafka cluster.
+* Log into in your Confluent Cloud account and create a new Kafka cluster. You should provision a cluster in the Azure region that you will run your Functions App in.
 
 ![CreateConfluentCluster](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-new.png)
 
-* Create a new Kafka Topic called "users"
+* Create a new Kafka Topic called "users" using the default topic settings.
 ![CreateKafkaTopic](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-new-topic.png)
 
 * Create a new API Key and Secret - note these values
@@ -70,14 +70,14 @@ public static class kafka_example
 ```
 
 Replace the following values:
-* **BootstrapServer**: should contain the value of Bootstrap server found in Confluent Cloud settings page. Will be something like "xyz-xyzxzy.westeurope.azure.confluent.cloud:9092".<br>
+* **BootstrapServer**: should contain the value of Bootstrap server found in Confluent Cloud settings page. Will be something like "pkc-xyzxy.westeurope.azure.confluent.cloud:9092".<br>
 * Set any string for your ConsumerGroup
-* **APIKey**: is you API access key, obtained from the Confluent Cloud web site.<br>
-* **APISecret**: is you API secret, obtained from the Confluent Cloud web site.<br>
+* **APIKey**: This is your API access key, obtained from the Confluent Cloud web portal.<br>
+* **APISecret**: This is your API secret, obtained from the Confluent Cloud web portal.<br>
 
 * Note about the CA certificate: 
 As described in [Confluent documentation](https://github.com/confluentinc/examples/tree/5.4.0-post/clients/cloud/csharp#produce-records), the .NET library does not have the capability to access root CA certificates.<br>
-Missing this step will cause your function to raise the error "sasl_ssl://xyz-xyzxzy.westeurope.azure.confluent.cloud:9092/bootstrap: Failed to verify broker certificate: unable to get local issuer certificate"<br>
+Missing this step will cause your function to raise the error "sasl_ssl://pkc-xyzxy.westeurope.azure.confluent.cloud:9092/bootstrap: Failed to verify broker certificate: unable to get local issuer certificate"<br>
 To overcome this, you need to:
     - Download CA certificate (i.e. from https://curl.haxx.se/ca/cacert.pem).
     - Rename the certificate file to anything other than cacert.pem to avoid any conflict with existing EventHubs Kafka certificate that is part of the extension.
@@ -86,9 +86,9 @@ To overcome this, you need to:
 
 ### Running the sample
 
-* Send some messages to the users Topic. You can do so either using the sample application given in the quick start or using the Confluent Cloud interface.
+* Send some messages to the users Topic. You can do so using the sample application given in the quick start, the ccloud CLI, or using the Confluent Cloud interface. Instructions for producing messages with the ccloud CLI can be found in the "Tools & Client Configuration" tab in the Confluent Cloud web portal.
 
-See Step 5 and 6 in the [quickstart](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-quickstart)
+For instructions using the sample application, see Step 5 and 6 in the [quickstart](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#step-5-create-sample-producer)
 
 ![CreateKafkaMessages](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-create-messages.png)
 
