@@ -88,9 +88,10 @@ To overcome this, you need to:
 
 * Send some messages to the users Topic. You can do so either using the sample application given in the quick start or using the Confluent Cloud interface.
 
+See Step 5 and 6 in the [quickstart](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-quickstart)
+
 ![CreateKafkaMessages](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-create-messages.png)
 
-See Step 5 and 6 in the [quickstart](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#cloud-quickstart)
 
 * Run the following from the folder where you cloned the project to start the Function app locally
 
