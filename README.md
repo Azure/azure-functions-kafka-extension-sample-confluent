@@ -113,7 +113,7 @@ You should see the Partitions of your Topic that have been assigned to this clie
 
 * To enable scaling in the Premium Function app currently you have to toggle a property on the Function app. 
 
-You can use the Azure Portal under Function settings
+You can use the Azure Portal to toggle the Runtime Scale Monitoring setting under Function runtime settings
 ![ChangeSettings](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-turn-on-runtime-driven-scaling.png)
 
 You can use the Azure CLI 
