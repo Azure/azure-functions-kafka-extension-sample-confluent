@@ -113,12 +113,14 @@ You should see the Partitions of your Topic that have been assigned to this clie
 
 * To enable scaling in the Premium Function app currently you have to toggle a property on the Function app. 
 
+You can use the Azure Portal under Function settings
+![ChangeSettings](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-turn-on-runtime-driven-scaling.png)
+
 You can use the Azure CLI 
 
 ```
 az resource update -g <resource_group> -n <NameOfFunctionApp>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
-or you can use resources.azure.com and patch the functionsRuntimeScaleMonitoringEnabled property to 1
 
 * You can now deploy your locally created Function app to the app created in Azure by using the following [func command](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#publish) by replacing the **NameOfFunctionApp** with the name of the Function app created in Azure in the previous step. <br>
 Note: To use this command you have to be logged into Azure using Azure CLI
