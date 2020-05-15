@@ -34,7 +34,7 @@ After you create a Confluent Cloud account follow these [steps](https://docs.con
 
 * Log into in your Confluent Cloud account and create a new Kafka cluster. To minimize your data transfer costs, you should provision a cluster in the same Azure region where your Functions App will run.
 
-![CreateConfluentCluster](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-new.png)
+![CreateConfluentCluster](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/master/images/kafka-cluster-create-messages.png)
 
 * Create a new Kafka Topic called "users" using the default topic settings.
 ![CreateKafkaTopic](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/master/images/kafka-new-topic.png)
@@ -90,7 +90,7 @@ To overcome this, you need to:
 
 For instructions using the sample application, see Step 5 and 6 in the [quickstart](https://docs.confluent.io/current/quickstart/cloud-quickstart/index.html#step-5-create-sample-producer)
 
-![CreateKafkaMessages](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-create-messages.png)
+![CreateKafkaMessages](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/master/images/kafka-cluster-create-messages.png)
 
 
 * Run the following from the folder where you cloned the project to start the Function app locally
@@ -103,7 +103,7 @@ The Function app starts executing and should connect to your Confluent Cloud Kaf
 
 You should see the Partitions of your Topic that have been assigned to this client show up and messages that were sent before being processed.
 
-![CreateKafkaMessages](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-func-consume-messages.png)
+![CreateKafkaMessages](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/master/images/kafka-func-consume-messages.png)
 
 * Note: You may notice that we have 6 partitions on the Kafka Topic "Users" but this client has been only assigned 3 of them, this is because I have another client listening to the same Topic and Kafka has load balanced the partitions among the clients.
 
@@ -114,7 +114,7 @@ You should see the Partitions of your Topic that have been assigned to this clie
 * To enable scaling in the Premium Function app currently you have to toggle a property on the Function app. 
 
 You can use the Azure Portal to toggle the Runtime Scale Monitoring setting under Function runtime settings
-![ChangeSettings](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-turn-on-runtime-driven-scaling.png)
+![ChangeSettings](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/master/images/kafka-turn-on-runtime-driven-scaling.png)
 
 You can use the Azure CLI 
 
@@ -131,7 +131,7 @@ func azure function publish <NameOfFunctionApp>
 
 * Finally, you can head over to the portal and for example use the [Live Metrics view](https://docs.microsoft.com/en-us/azure/azure-monitor/app/live-stream) to see the logs and requests.
 
-![KafkaPortal](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-function-portal.png)
+![KafkaPortal](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/master/images/kafka-function-portal.png)
 
 
 
