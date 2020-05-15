@@ -37,7 +37,7 @@ After you create a Confluent Cloud account follow these [steps](https://docs.con
 ![CreateConfluentCluster](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-cluster-new.png)
 
 * Create a new Kafka Topic called "users" using the default topic settings.
-![CreateKafkaTopic](https://github.com/Azure/azure-functions-kafka-extension-sample-confluent/blob/master/images/kafka-new-topic.png)
+![CreateKafkaTopic](https://raw.githubusercontent.com/Azure/azure-functions-kafka-extension-sample-confluent/master/images/kafka-new-topic.png)
 
 * Create a new API Key and Secret - note these values
 
