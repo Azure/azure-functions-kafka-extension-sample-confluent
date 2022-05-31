@@ -23,7 +23,7 @@ This sample shows how to set up an write a .NET Function app which writes to a K
 
 * [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash)
 * [Azure Account](https://azure.microsoft.com/en-us/free/) and access to [Azure Portal](https://azure.microsoft.com/en-us/features/azure-portal/) OR [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
-* [Confluent Cloud Account](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/confluentinc.confluent-cloud-kafka-service-azure?tab=Overview)
+* [Confluent Cloud Account](https://docs.confluent.io/cloud/current/overview.html)
 Confluent Cloud is a fully managed pay-as-you-go Kafka service. Confluent Cloud integrates with your Azure billing account.
 
 ## Steps to set up 
