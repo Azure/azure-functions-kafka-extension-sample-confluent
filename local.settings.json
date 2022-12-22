@@ -1,0 +1,12 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "BootstrapServer":"<BootstrapServer>",
+        "topicName":"users",
+        "APIKey":"<APIKey>",
+        "APISecret":"<APISecret>",
+        "ConsumerGroup":"<ConsumerGroup>"
+    }
+}
