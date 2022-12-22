@@ -7,6 +7,6 @@
         "topicName":"users",
         "APIKey":"<APIKey>",
         "APISecret":"<APISecret>",
-        "ConsumerGroup":"<ConsumerGroup>"
+        "ConsumerGroup":"$Default"
     }
 }
