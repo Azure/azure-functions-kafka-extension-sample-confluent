@@ -10,12 +10,12 @@ namespace azure_functions_kafka_extension_sample_confluent
         [FunctionName("kafkaApp")]
         public void Run(
             [KafkaTrigger("BootstrapServer",
-                          "users",
-                          Username = "<APIKey>",
-                          Password = "<APISecret>",
+                          "topicName",
+                          Username = "APIKey",
+                          Password = "APISecret",
                           Protocol = BrokerProtocol.SaslSsl,
                           AuthenticationMode = BrokerAuthenticationMode.Plain,
-                          ConsumerGroup = "<ConsumerGroup>")] KafkaEventData<string>[] events, ILogger log)
+                          ConsumerGroup = "ConsumerGroup")] KafkaEventData<string>[] events, ILogger log)
         {
             foreach (KafkaEventData<string> eventData in events)
             {
