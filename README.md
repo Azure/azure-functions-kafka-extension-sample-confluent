@@ -46,27 +46,20 @@ After you create a Confluent Cloud account follow these [steps](https://docs.con
 
 * Clone this repository using Git to a folder
 
-* Change the code in kafka_example.cs to point to your Kafka cluster that you set up in the previous step
-```c#
-public static class kafka_example
-    {
-        [FunctionName("kafkaApp")]
-        public static void ConfluentCloudStringTrigger(
-             [KafkaTrigger(
-                "BootstrapServer",
-                "users",
-                ConsumerGroup = "<ConsumerGroup>",
-                Protocol = BrokerProtocol.SaslSsl,
-                AuthenticationMode = BrokerAuthenticationMode.Plain,
-                Username = "<APIKey>",
-                Password = "<APISecret>",
-                SslCaLocation = "confluent_cloud_cacert.pem")]
-        KafkaEventData<string> kafkaEvent,
-        ILogger logger)
-        {	    
-            logger.LogInformation(kafkaEvent.Value.ToString());
-        }
+* Change the settings in local.settings.json to point to your Kafka cluster that you set up in the previous step
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "BootstrapServer":"<BootstrapServer>",
+        "topicName":"users",
+        "APIKey":"<APIKey>",
+        "APISecret":"<APISecret>",
+        "ConsumerGroup":"$Default"
     }
+}
 ```
 
 Replace the following values:
@@ -74,15 +67,6 @@ Replace the following values:
 * Set any string for your ConsumerGroup
 * **APIKey**: This is your API access key, obtained from the Confluent Cloud web portal.<br>
 * **APISecret**: This is your API secret, obtained from the Confluent Cloud web portal.<br>
-
-* Note about the CA certificate: 
-As described in [Confluent documentation](https://github.com/confluentinc/examples/tree/5.4.0-post/clients/cloud/csharp#produce-records), the .NET library does not have the capability to access root CA certificates.<br>
-Missing this step will cause your function to raise the error "sasl_ssl://pkc-xyzxy.westeurope.azure.confluent.cloud:9092/bootstrap: Failed to verify broker certificate: unable to get local issuer certificate"<br>
-To overcome this, you need to:
-    - Download CA certificate (i.e. from https://curl.haxx.se/ca/cacert.pem).
-    - Rename the certificate file to anything other than cacert.pem to avoid any conflict with existing EventHubs Kafka certificate that is part of the extension.
-    - Include the file in the project, setting "copy to output directory" and set the **SslCaLocation** trigger attribute property.     
-    - In the example we have already downloaded this file and named it to `confluent_cloud_cacert.pem`  
 
 ### Running the sample
 
