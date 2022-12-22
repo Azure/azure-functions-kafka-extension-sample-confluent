@@ -47,27 +47,19 @@ After you create a Confluent Cloud account follow these [steps](https://docs.con
 * Clone this repository using Git to a folder
 
 * Change the code in kafka_example.cs to point to your Kafka cluster that you set up in the previous step
-```c#
-public class kafka_example
-    {
-        
-        [FunctionName("kafkaApp")]
-        public void Run(
-            [KafkaTrigger("BootstrapServer",
-                          "users",
-                          Username = "<APIKey>",
-                          Password = "<APISecret>",
-                          Protocol = BrokerProtocol.SaslSsl,
-                          AuthenticationMode = BrokerAuthenticationMode.Plain,
-                          ConsumerGroup = "<ConsumerGroup>")] KafkaEventData<string>[] events,
-            ILogger log)
-        {
-            foreach (KafkaEventData<string> eventData in events)
-            {
-                log.LogInformation($"C# Kafka trigger function processed a message: {eventData.Value}");
-            }
-        }
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "BootstrapServer":"<BootstrapServer>",
+        "topicName":"users",
+        "APIKey":"<APIKey>",
+        "APISecret":"<APISecret>",
+        "ConsumerGroup":"<ConsumerGroup>"
     }
+}
 ```
 
 Replace the following values:
