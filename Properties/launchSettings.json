@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "azure_functions_kafka_extension_sample_confluent": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7030",
+      "launchBrowser": false
+    }
+  }
+}
