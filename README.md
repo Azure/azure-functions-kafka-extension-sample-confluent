@@ -46,7 +46,7 @@ After you create a Confluent Cloud account follow these [steps](https://docs.con
 
 * Clone this repository using Git to a folder
 
-* Change the code in kafka_example.cs to point to your Kafka cluster that you set up in the previous step
+* Change the settings in local.settings.json to point to your Kafka cluster that you set up in the previous step
 ```json
 {
     "IsEncrypted": false,
