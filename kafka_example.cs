@@ -7,16 +7,15 @@ namespace azure_functions_kafka_extension_sample_confluent
     public class kafka_example
     {
         
-        [FunctionName("kafka_example")]
+        [FunctionName("kafkaApp")]
         public void Run(
-            [KafkaTrigger("pkc-4j8dq.southeastasia.azure.confluent.cloud:9092",
-                          "topic_0",
-                          Username = "XA7O3AF2JBXUQDVU",
-                          Password = "9tu6Ywa5fKRezcxJ7327uSvr7aLWsIvWAwNFyzSPD+rMx0K5Oe3c8lgdQhA9OezO",
+            [KafkaTrigger("BootstrapServer",
+                          "users",
+                          Username = "<APIKey>",
+                          Password = "<APISecret>",
                           Protocol = BrokerProtocol.SaslSsl,
                           AuthenticationMode = BrokerAuthenticationMode.Plain,
-                          ConsumerGroup = "$Default")] KafkaEventData<string>[] events,
-            ILogger log)
+                          ConsumerGroup = "<ConsumerGroup>")] KafkaEventData<string>[] events, ILogger log)
         {
             foreach (KafkaEventData<string> eventData in events)
             {
