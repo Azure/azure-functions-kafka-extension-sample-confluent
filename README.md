@@ -76,15 +76,6 @@ Replace the following values:
 * **APIKey**: This is your API access key, obtained from the Confluent Cloud web portal.<br>
 * **APISecret**: This is your API secret, obtained from the Confluent Cloud web portal.<br>
 
-* Note about the CA certificate: 
-As described in [Confluent documentation](https://github.com/confluentinc/examples/tree/5.4.0-post/clients/cloud/csharp#produce-records), the .NET library does not have the capability to access root CA certificates.<br>
-Missing this step will cause your function to raise the error "sasl_ssl://pkc-xyzxy.westeurope.azure.confluent.cloud:9092/bootstrap: Failed to verify broker certificate: unable to get local issuer certificate"<br>
-To overcome this, you need to:
-    - Download CA certificate (i.e. from https://curl.haxx.se/ca/cacert.pem).
-    - Rename the certificate file to anything other than cacert.pem to avoid any conflict with existing EventHubs Kafka certificate that is part of the extension.
-    - Include the file in the project, setting "copy to output directory" and set the **SslCaLocation** trigger attribute property.     
-    - In the example we have already downloaded this file and named it to `confluent_cloud_cacert.pem`  
-
 ### Running the sample
 
 * Send some messages to the users Topic. You can do so using the sample application given in the quick start, the ccloud CLI, or using the Confluent Cloud interface. Instructions for producing messages with the ccloud CLI can be found in the "Tools & Client Configuration" tab in the Confluent Cloud web portal.
