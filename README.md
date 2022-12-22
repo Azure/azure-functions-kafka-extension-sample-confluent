@@ -57,7 +57,7 @@ After you create a Confluent Cloud account follow these [steps](https://docs.con
         "topicName":"users",
         "APIKey":"<APIKey>",
         "APISecret":"<APISecret>",
-        "ConsumerGroup":"<ConsumerGroup>"
+        "ConsumerGroup":"$Default"
     }
 }
 ```
